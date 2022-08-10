@@ -2,12 +2,13 @@
 
 
 function one(x) {
-
+  let count = 10;
   function two() {
     const num = +prompt("Введите значение от 1 до 100");
+    count--;
 
-    if (num > x) {
-      alert('Загаданное число меньше');
+    if (num > x && count != 0) {
+      alert('Загаданное число меньше. У вас осталось ' + count + ' попыток');
       two();
     } else if (num == 0) {
       if (confirm('Игра окончена, хотите повторить?')) {
@@ -15,14 +16,20 @@ function one(x) {
       } else {
           return;
       }
-    }  else if (num < x) {
-      alert('Загаданное число больше');
+    }  else if (num < x && count != 0) {
+      alert('Загаданное число больше. У вас осталось ' + count + ' попыток');
       two();
     } else if (num == x) {
       alert('Поздравляю, Вы угадали!!!');
     } else if (typeof num == 'string') {
       alert('Введите число');
       two();
+    } else if (count==0) {
+      if (confirm('Попытки закончились, хотите сыграть еще?')) {
+        location.reload();
+      } else {
+          return;
+      }
     } else {
       alert('Введите число');
       two();
