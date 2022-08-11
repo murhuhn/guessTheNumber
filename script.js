@@ -1,8 +1,10 @@
 'use strict'
 
 
-function one(x) {
+function one() {
   let count = 10;
+  let x = Math.floor(Math.random() * 100) + 1;
+  console.log(x);
   function two() {
     const num = +prompt("Введите значение от 1 до 100");
     count--;
@@ -11,16 +13,16 @@ function one(x) {
       alert('Загаданное число меньше. У вас осталось ' + count + ' попыток');
       two();
     } else if (num == 0) {
-      if (confirm('Игра окончена, хотите повторить?')) {
-        two();
-      } else {
-          return;
-      }
+      alert ('Игра окончена');
     }  else if (num < x && count != 0) {
       alert('Загаданное число больше. У вас осталось ' + count + ' попыток');
       two();
     } else if (num == x) {
-      alert('Поздравляю, Вы угадали!!!');
+      if (confirm('Поздравляю, Вы угадали! Хотели бы сыграть еще?')) {
+          location.reload();
+      } else {
+          return;
+      }
     } else if (typeof num == 'string') {
       alert('Введите число');
       two();
@@ -39,4 +41,4 @@ function one(x) {
 }
 
 
-one(18);
+one();
